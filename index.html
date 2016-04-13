@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="Todo">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+</head>
+
+<body>
+  <div ng-controller="TodoListController">
+    <h1>{{title}}</h1>
+    <p>{{list.length}} élément(s) <button ng-click=deleteAll($index)>Tout supprimer</button></p>
+
+    <hr>
+
+    <form ng-submit="addItem();">
+      <input type="text" ng-model="newItem" placeholder="Ajouter une tâche">
+    </form>
+    <ul>
+      <li ng-if="newItem">{{newItem}}</li>
+      <li ng-repeat="item in list track by $index">
+        <button ng-click=delete($index)>x</button> {{item}}</li>
+    </ul>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
